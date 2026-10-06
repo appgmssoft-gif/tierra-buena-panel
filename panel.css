@@ -1,0 +1,58 @@
+/* panel.css — Panel de acceso de Tierra Buena (F911). Sin estilos en línea: la política de seguridad los bloquea. */
+:root{
+  --fondo:#faf5ea; --fondo2:#f1e6c9; --tarjeta:#fffdf7; --texto:#2b2a22; --suave:#5d5a49;
+  --verde:#3f5d3a; --verde2:#2f4a2c; --sobre-verde:#fffdf7; --sol:#f2b84b; --borde:#e3d8bb; --foco:#b8741a;
+  --sombra:0 8px 24px rgba(63,93,58,.14);
+  --serif:Georgia,'Iowan Old Style','Palatino Linotype',serif; --sans:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{ --fondo:#17140f; --fondo2:#201b13; --tarjeta:#211d15; --texto:#f2ead9; --suave:#c4bba3; --verde:#8fc77f; --verde2:#a6d996;
+    --sobre-verde:#14210f; --borde:#3a3426; --foco:#f2b84b; --sombra:0 8px 24px rgba(0,0,0,.4); }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:12px}
+body{margin:0;min-height:100vh;font:17px/1.55 var(--sans);color:var(--texto);
+  background:radial-gradient(120% 60% at 50% 0,var(--fondo2),var(--fondo) 60%) no-repeat,var(--fondo);
+  padding:env(safe-area-inset-top,0) env(safe-area-inset-right,0) env(safe-area-inset-bottom,0) env(safe-area-inset-left,0)}
+.panel{max-width:520px;margin:0 auto;padding:20px 16px 36px;display:flex;flex-direction:column;gap:16px}
+.cabeza{text-align:center;padding:12px 0 4px}
+.logo{width:96px;height:96px;border-radius:24px;box-shadow:var(--sombra)}
+.marca{margin:12px 0 0;font:700 15px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--verde)}
+h1{margin:6px 0 2px;font:700 30px/1.15 var(--serif)}
+.frase{margin:0;color:var(--suave);font-style:italic;font-family:var(--serif)}
+.tarjeta{background:var(--tarjeta);border:1px solid var(--borde);border-radius:20px;padding:18px;box-shadow:var(--sombra)}
+.tarjeta h2{margin:0 0 6px;font:700 20px/1.25 var(--serif)}
+.tarjeta p{margin:8px 0}
+.suave{color:var(--suave)}
+.nota{color:var(--suave);font-size:15px;border-top:1px dashed var(--borde);padding-top:12px;margin-top:14px}
+.aviso{min-height:1.4em;color:var(--verde);font-weight:600}
+.entrar{text-align:center;border-color:var(--verde)}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:56px;padding:12px 18px;border:2px solid var(--verde);border-radius:16px;
+  background:var(--verde);color:var(--sobre-verde);font:700 18px/1.2 var(--sans);text-decoration:none;cursor:pointer;-webkit-tap-highlight-color:transparent;
+  transition:transform .12s ease,box-shadow .12s ease,background .12s ease}
+.btn.grande{min-height:64px;font-size:20px;margin:12px 0 4px;box-shadow:0 6px 16px rgba(63,93,58,.28)}
+.btn.secundario{background:transparent;color:var(--verde)}
+.btn:active{transform:scale(.98)}
+.btn:hover{background:var(--verde2);color:var(--sobre-verde)}
+:focus-visible{outline:3px solid var(--foco);outline-offset:3px;border-radius:12px}
+.pestanas{display:flex;gap:8px;margin:12px 0}
+.pestana{flex:1;min-height:48px;border:2px solid var(--borde);border-radius:14px;background:transparent;color:var(--texto);font:600 17px/1 var(--sans);cursor:pointer}
+.pestana[aria-selected="true"]{border-color:var(--verde);background:var(--verde);color:var(--sobre-verde)}
+[hidden]{display:none !important}
+.pasos ol{margin:0;padding:0;list-style:none;counter-reset:p}
+.pasos li{counter-increment:p;position:relative;padding:10px 0 10px 46px;min-height:44px}
+.pasos li::before{content:counter(p);position:absolute;left:0;top:8px;width:34px;height:34px;border-radius:50%;background:var(--sol);color:#2b2a22;font:700 17px/34px var(--sans);text-align:center}
+details{border-top:1px solid var(--borde)}
+details:first-of-type{border-top:0}
+summary{cursor:pointer;padding:14px 4px;font-weight:600;min-height:48px;list-style-position:inside}
+details p{margin:0 0 14px;padding:0 4px;color:var(--suave)}
+.sin-red{position:sticky;top:0;z-index:5;margin:0;padding:10px 16px;background:var(--sol);color:#2b2a22;text-align:center;font-weight:600}
+.pie{text-align:center;color:var(--suave);font-size:14px}
+.pie p{margin:8px 0 0}
+.resalta{animation:resalta 1.6s ease-out 1}
+@keyframes resalta{0%{box-shadow:0 0 0 0 rgba(242,184,75,.9)}100%{box-shadow:0 0 0 18px rgba(242,184,75,0)}}
+@media (prefers-reduced-motion:no-preference){
+  .logo{animation:flota 5s ease-in-out infinite}
+  @keyframes flota{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+}
+@media (prefers-reduced-motion:reduce){ .btn,.resalta,.logo{animation:none;transition:none} }

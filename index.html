@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="referrer" content="no-referrer">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; worker-src 'self'; manifest-src 'self'; frame-src 'none'; upgrade-insecure-requests;">
+<meta name="theme-color" content="#faf5ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#17140f" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="La puerta de entrada a Tierra Buena: ábrela, déjala en tu celular y entra con tu misma cuenta.">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Tierra Buena">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="stylesheet" href="panel.css">
+<title>Tierra Buena · Acceso</title>
+</head>
+<body>
+<div id="sinRed" class="sin-red" role="status" hidden>Sin internet: conéctate (datos o Wi‑Fi) para abrir Tierra Buena.</div>
+
+<main class="panel" id="inicio">
+  <header class="cabeza">
+    <img class="logo" src="icon-192.png" alt="" width="96" height="96">
+    <p class="marca">Tierra Buena</p>
+    <h1>Tu puerta de entrada</h1>
+    <p class="frase">Vivir lo que aprendemos</p>
+  </header>
+
+  <section class="tarjeta entrar" aria-labelledby="t-abrir">
+    <h2 id="t-abrir">Entrar ahora</h2>
+    <a id="btnAbrir" class="btn grande" href="https://appgmssoft-gif.github.io/tierra-buena-movil/" rel="noopener">Abrir Tierra Buena</a>
+    <p class="suave">Entras con tu misma cuenta de siempre. Aquí no hay que crear otra.</p>
+  </section>
+
+  <section class="tarjeta" aria-labelledby="t-instalar">
+    <h2 id="t-instalar">Déjala en tu celular</h2>
+    <p>Así la abres con un toque, como cualquier otra app, y sin buscar el enlace.</p>
+    <button id="btnInstalar" class="btn secundario" type="button">Instalar en mi celular</button>
+    <p id="msgInstalar" class="aviso" role="status" aria-live="polite"></p>
+  </section>
+
+  <section class="tarjeta" id="guia" aria-labelledby="t-guia" tabindex="-1">
+    <h2 id="t-guia">Paso a paso</h2>
+    <p class="suave">Elige tu celular. Son 4 toques.</p>
+    <div class="pestanas" role="tablist" aria-label="Tipo de celular">
+      <button id="tab-android" class="pestana" role="tab" type="button" data-guia="android" aria-controls="guia-android" aria-selected="true">Android</button>
+      <button id="tab-iphone" class="pestana" role="tab" type="button" data-guia="iphone" aria-controls="guia-iphone" aria-selected="false" tabindex="-1">iPhone</button>
+    </div>
+    <div id="guia-android" class="pasos" role="tabpanel" aria-labelledby="tab-android">
+      <ol>
+        <li>Abre esta página en <b>Chrome</b>.</li>
+        <li>Toca los <b>tres puntos</b> (⋮) arriba a la derecha.</li>
+        <li>Elige <b>«Instalar app»</b> (o «Añadir a pantalla de inicio»).</li>
+        <li>Toca <b>«Instalar»</b>. El ícono aparece en tu pantalla.</li>
+      </ol>
+      <p class="suave">Si no aparece la opción, espera unos segundos y revisa que estés en Chrome.</p>
+    </div>
+    <div id="guia-iphone" class="pasos" role="tabpanel" aria-labelledby="tab-iphone" hidden>
+      <ol>
+        <li>Abre esta página en <b>Safari</b> (no dentro de otra app).</li>
+        <li>Toca el botón <b>Compartir</b> (el cuadrado con una flecha hacia arriba), abajo en el centro.</li>
+        <li>Baja y toca <b>«Agregar a pantalla de inicio»</b>.</li>
+        <li>Toca <b>«Agregar»</b> arriba a la derecha.</li>
+      </ol>
+      <p class="suave">Si no ves la opción, copia el enlace y ábrelo directamente en Safari.</p>
+    </div>
+    <p class="nota">Los pasos son los mismos aquí y dentro de Tierra Buena: lo que instales queda como un ícono en tu pantalla.</p>
+  </section>
+
+  <section class="tarjeta" aria-labelledby="t-ayuda">
+    <h2 id="t-ayuda">Si algo no anda</h2>
+    <details>
+      <summary>Se sigue viendo la versión vieja</summary>
+      <p>Cierra la app del todo (deslízala hacia arriba en la lista de apps) y ábrela de nuevo.</p>
+    </details>
+    <details>
+      <summary>No logro abrirla</summary>
+      <p>Revisa tu internet (datos o Wi‑Fi). Si no hay conexión, arriba aparece un aviso. Cuando vuelva, toca «Abrir Tierra Buena».</p>
+    </details>
+    <details>
+      <summary>No recuerdo mi contraseña</summary>
+      <p>Se recupera dentro de Tierra Buena, en la pantalla para entrar: busca «Recuperar mi contraseña».</p>
+    </details>
+  </section>
+
+  <section class="tarjeta compartir" aria-labelledby="t-compartir">
+    <h2 id="t-compartir">¿Conoces a alguien que lo necesite?</h2>
+    <p>Mándale este enlace. Tierra Buena es para todos, sin importar la iglesia ni lo que cada uno crea.</p>
+    <button id="btnCompartir" class="btn secundario" type="button">Compartir este enlace</button>
+    <p id="msgCompartir" class="aviso" role="status" aria-live="polite"></p>
+  </section>
+
+  <footer class="pie"><p>Tierra Buena · Vivir lo que aprendemos</p></footer>
+</main>
+<script src="panel.js"></script>
+</body>
+</html>

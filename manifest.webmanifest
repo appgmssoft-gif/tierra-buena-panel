@@ -1,0 +1,21 @@
+{
+  "id": "./index.html",
+  "name": "Tierra Buena · Acceso",
+  "short_name": "Tierra Buena",
+  "description": "La puerta de entrada a Tierra Buena: ábrela, déjala en tu celular y entra con tu misma cuenta.",
+  "lang": "es",
+  "dir": "ltr",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#faf5ea",
+  "theme_color": "#3f5d3a",
+  "categories": ["lifestyle", "education"],
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
