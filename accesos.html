@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self' https://*.supabase.co; object-src 'none'; base-uri 'self'; form-action 'none'; worker-src 'self'; manifest-src 'self'; frame-src 'none'; upgrade-insecure-requests;">
+<meta name="theme-color" content="#faf9f7">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Mis accesos">
+<link rel="manifest" href="accesos.webmanifest">
+<link rel="icon" href="icon-acc-192.png">
+<link rel="apple-touch-icon" href="icon-acc-192.png">
+<link rel="stylesheet" href="accesos.css">
+<title>Panel de accesos — Tierra Buena</title>
+</head>
+<body>
+<div class="wrap">
+  <h1>🔑 Panel de accesos — Tierra Buena</h1>
+  <p class="sub">Uso exclusivo tuyo. No compartas esta dirección ni tu PIN: la llave que usa tiene acceso total a la base de datos. Queda guardada cifrada con tu PIN, solo en este aparato.</p>
+
+  <div class="card" id="panelBloqueo">
+    <h3 data-u="1b">🔒 Panel protegido</h3>
+    <label>Tu PIN</label>
+    <input type="password" id="inPin" autocomplete="off" placeholder="Escribe tu PIN">
+    <p></p>
+    <button id="btnDesbloquear">Desbloquear</button>
+    <div id="msgBloqueo"></div>
+  </div>
+
+  <div class="card" id="panelConexion">
+    <h3 data-u="1">Conectar con Supabase</h3>
+    <div class="row">
+      <div>
+        <label>URL del proyecto</label>
+        <input type="text" id="inUrl" placeholder="https://xxxxx.supabase.co">
+      </div>
+      <div>
+        <label>Service role key</label>
+        <input type="password" id="inKey" placeholder="eyJhbGciOi...">
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <label>Crea tu PIN (mínimo 6 caracteres)</label>
+        <input type="password" id="inPinNuevo" autocomplete="off" placeholder="Solo tú lo sabes">
+      </div>
+    </div>
+    <button id="btnConectar">Conectar y proteger</button>
+    <span class="muted" data-u="2">Se guarda cifrada con tu PIN, solo en este aparato.</span>
+    <div id="msgConexion"></div>
+  </div>
+
+  <div id="panelPrincipal">
+    <div class="card">
+      <div class="top-actions">
+        <h3 data-u="3">📥 Solicitudes pendientes <span id="contadorSol" class="muted"></span></h3>
+        <button class="ghost sm" id="btnRefrescarSolicitudes">↻ Refrescar</button>
+      </div>
+      <details data-u="4"><summary data-u="5">Cómo decidir con tranquilidad (lee esto una vez)</summary>
+        <ul class="muted" data-u="6">
+          <li><b>Nunca apruebes solo por lo que escribió la persona.</b> Busca tú el enlace, llama a la referencia o habla con ella. Marca al menos 2 comprobaciones.</li>
+          <li><b>Señales de alerta:</b> correo recién creado sin relación con la iglesia, ninguna página pública, referencia que no responde, prisa excesiva, o datos que no coinciden entre sí.</li>
+          <li><b>Si dudas, pide más datos.</b> El botón «Pedir más datos» abre un correo amable ya escrito. No hay apuro: es mejor tardar un día que dar acceso a quien no corresponde.</li>
+          <li><b>Si alguien reclama</b> por qué se le piden datos: se explica en la solicitud (se usan solo para verificar y cuidar a la comunidad). Puedes revocar cualquier acceso desde la lista de abajo.</li>
+          <li><b>Las que llegan del celular traen pocos datos:</b> confírmalas siempre por correo o teléfono antes de aprobar.</li>
+        </ul></details>
+      <div id="resultadoAprobacion"></div>
+      <div id="solicitudesWrap"><p class="empty">Cargando…</p></div>
+    </div>
+
+    <div class="card">
+      <div class="top-actions">
+        <h3 data-u="3">🔁 Recuperación de claves</h3>
+        <button class="ghost sm" id="btnRefrescarRecup">↻ Refrescar</button>
+      </div>
+      <p class="muted" data-u="7">Cuando alguien toca «¿Olvidaste tu contraseña?» en la app, su petición aparece aquí con su nombre y correo. Genera el código y envíaselo a ESE mismo correo (así solo lo recibe quien puede leerlo). El código sirve 24 horas y una sola vez; la persona elige su contraseña nueva dentro de la app.</p>
+      <div id="resultadoRecup"></div>
+      <div id="recupWrap"><p class="empty">Cargando…</p></div>
+    </div>
+
+    <div class="card">
+      <h3 data-u="1">Generar acceso manual</h3>
+      <div class="row">
+        <div>
+          <label>Correo del pastor</label>
+          <input type="email" id="inCorreo" placeholder="pastor@correo.com">
+        </div>
+        <div>
+          <label>Iglesia</label>
+          <input type="text" id="inIglesia" placeholder="Iglesia Esperanza Central">
+        </div>
+      </div>
+      <button id="btnGenerar">Generar código</button>
+      <div id="resultadoGenerar"></div>
+    </div>
+
+    <div class="card">
+      <div class="top-actions">
+        <input type="text" class="search" id="inBuscar" placeholder="Buscar por correo o iglesia…">
+        <div>
+          <button class="ghost sm" id="btnRefrescar">↻ Refrescar</button>
+          <button class="ghost sm" id="btnBloquear">🔒 Bloquear</button>
+          <button class="ghost sm" id="btnDesconectar">Cambiar conexión</button>
+        </div>
+      </div>
+      <p class="ayuda-estados"><b>Pendiente:</b> aún no se ha usado. <b>Activado:</b> ya se usó con su correo. <b>Vencido:</b> pasaron 30 días sin uso. El código solo sirve con el correo que aparece en su fila; si la persona usa otro, cámbialo con ✏️.</p>
+      <div id="tablaWrap"><p class="empty">Cargando…</p></div>
+    </div>
+  </div>
+</div>
+<script src="vendor/supabase.js"></script>
+<script src="accesos.js"></script>
+</body>
+</html>

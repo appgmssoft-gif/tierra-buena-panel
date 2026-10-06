@@ -1,7 +1,7 @@
 // sw.js — Panel de acceso (F911). Guarda solo la «cáscara» del panel para que abra aunque no haya internet.
 // El panel no usa Supabase ni pide nada a la nube: la cuenta se usa dentro de Tierra Buena.
-const V = 'tb-panel-f911';
-const CASCARA = ['./', './index.html', './panel.css', './panel.js', './manifest.webmanifest', './icon-192.png', './icon-512.png', './icon-maskable-192.png', './icon-maskable-512.png'];
+const V = 'tb-panel-f912';
+const CASCARA = ['./', './index.html', './panel.css', './panel.js', './manifest.webmanifest', './icon-192.png', './icon-512.png', './icon-maskable-192.png', './icon-maskable-512.png', './accesos.html', './accesos.css', './accesos.js', './accesos.webmanifest', './vendor/supabase.js', './icon-acc-192.png', './icon-acc-512.png', './icon-acc-maskable-192.png', './icon-acc-maskable-512.png'];
 self.addEventListener('install', (e) => { e.waitUntil(caches.open(V).then((c) => c.addAll(CASCARA)).then(() => self.skipWaiting())); });
 self.addEventListener('activate', (e) => {
   e.waitUntil(caches.keys().then((ks) => Promise.all(ks.filter((k) => k !== V && /^tb-panel-/.test(k)).map((k) => caches.delete(k)))).then(() => self.clients.claim()));
